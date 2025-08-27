@@ -10,9 +10,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
-# spring.datasource.url=
-
-
+server:
+  port: 8081
