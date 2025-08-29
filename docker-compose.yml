@@ -1,0 +1,51 @@
+services:
+  # Eureka Service Registry
+  eureka:
+    build: ./eureka
+    container_name: eureka
+    ports:
+      - "8761:8761"
+
+  # Activity Service + its MongoDB
+  mongo-activity:
+    image: mongo:latest
+    container_name: mongo-activity
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+
+  activityservice:
+    build: ./activityservice
+    container_name: activityservice
+    depends_on:
+      - eureka
+      - mongo-activity
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://admin:secret@mongo-activity:27017/activitydb?authSource=admin
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
+
+  # AI Service + its MongoDB
+  mongo-ai:
+    image: mongo:latest
+    container_name: mongo-ai
+    ports:
+      - "27018:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+
+  aiservice:
+    build: ./aiservice
+    container_name: aiservice
+    depends_on:
+      - eureka
+      - mongo-ai
+    ports:
+      - "8083:8083"
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://admin:secret@mongo-ai:27017/aidb?authSource=admin
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
