@@ -1,0 +1,24 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE # load-balanced service name from Eureka
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - StripPrefix=1   # removes the "/api"
+  logging:
+    level:
+      org.springframework.cloud.gateway: DEBUG
+
+
+server:
+  port: 8080
