@@ -2,10 +2,15 @@ spring:
   application:
     name: api-gateway
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8181/realms/fitness-app/protocol/openid-connect/certs
+
   cloud:
 #    config:
 #      enabled: false   # disable Config Server for local testing
-
     gateway:
       server:
         webflux:
