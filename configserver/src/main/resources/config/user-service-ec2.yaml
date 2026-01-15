@@ -1,0 +1,21 @@
+spring:
+  profiles: ec2
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fitness-micro-user
+    username: postgres
+    password: Wilderness9
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://172.31.75.114:8761/eureka/
+
+server:
+  port: 8081
