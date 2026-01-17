@@ -3,8 +3,8 @@ spring:
     name: api-gateway
 
   cloud:
-#    config:
-#      enabled: false   # disable Config Server for local testing
+    #    config:
+    #      enabled: false   # disable Config Server for local testing
 
     gateway:
       server:
@@ -33,7 +33,7 @@ logging:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://98.84.14.174:8761/eureka
 
 server:
   port: 8080

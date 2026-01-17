@@ -1,8 +1,6 @@
 spring:
-  profiles: ec2
-
   datasource:
-    url: jdbc:postgresql://localhost:5432/fitness-micro-user
+    url: jdbc:postgresql://<RDS-ENDPOINT>:5432/postgres
     username: postgres
     password: Wilderness9
     driver-class-name: org.postgresql.Driver
