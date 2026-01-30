@@ -5,10 +5,12 @@ import com.fitness.userservice.dto.UserResponse;
 import com.fitness.userservice.services.UserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/users")
 @AllArgsConstructor
@@ -28,6 +30,7 @@ public class UserController {
 
     @GetMapping("/{userId}/validate")
     public ResponseEntity<Boolean> validateUser(@PathVariable String userId) {
+        log.info(">>> CONTROLLER validateUser called with userId={}", userId);
         return ResponseEntity.ok(userService.existByUserId(userId));
     }
 }

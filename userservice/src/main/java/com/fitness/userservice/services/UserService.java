@@ -29,6 +29,8 @@ public class UserService {
             userResponse.setPassword(existingUser.getPassword());
             userResponse.setCreatedAt(existingUser.getCreatedAt());
             userResponse.setUpdatedAt(existingUser.getUpdatedAt());
+
+            return userResponse;
         }
 
         // 1. Map request → entity
