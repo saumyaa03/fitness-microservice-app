@@ -19,22 +19,22 @@ public class RecommendationService {
         return recommendationRepository.findByUserId(userId);
     }
 
-//    public Recommendation getActivityRecommendation(String activityId) {
-//        return recommendationRepository.findByActivityId(activityId)
-//                .orElseThrow(() -> new RuntimeException("No recommendation found for this activity: " + activityId));
-//    }
     public Recommendation getActivityRecommendation(String activityId) {
         return recommendationRepository.findByActivityId(activityId)
-                .orElseGet(() -> Recommendation.builder()
-                        .activityId(activityId)
-                        .userId("")   // or leave null
-                        .recommendation("") // empty string instead of throwing
-                        .improvements(Collections.emptyList())
-                        .suggestions(Collections.emptyList())
-                        .safety(Collections.emptyList())
-                        .build()
-                );
+                .orElseThrow(() -> new RuntimeException("No recommendation found for this activity: " + activityId));
     }
+//    public Recommendation getActivityRecommendation(String activityId) {
+//        return recommendationRepository.findByActivityId(activityId)
+//                .orElseGet(() -> Recommendation.builder()
+//                        .activityId(activityId)
+//                        .userId("")   // or leave null
+//                        .recommendation("") // empty string instead of throwing
+//                        .improvements(Collections.emptyList())
+//                        .suggestions(Collections.emptyList())
+//                        .safety(Collections.emptyList())
+//                        .build()
+//                );
+//    }
 
 
 }
