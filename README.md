@@ -1,3 +1,8 @@
+![Java](https://img.shields.io/badge/Java-17-orange)
+![Spring Boot](https://img.shields.io/badge/SpringBoot-3.x-brightgreen)
+![Kafka](https://img.shields.io/badge/Kafka-Event--Driven-black)
+![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
+
 # Fitness Microservices Platform - Backend
 
 A distributed microservices-based backend system built with Spring Boot.
